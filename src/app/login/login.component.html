@@ -1,0 +1,79 @@
+<!-- <div class="container-login">
+    <div class="form-box">
+        <h2>Login</h2>
+        <b class="mensagem">{{mensagem}}</b>
+        <form>
+            <div class="input-group">
+                <input type="email" [(ngModel)]="obj.email" name="email" required>
+                <label>E-mail</label>
+            </div>
+            <div class="input-group">
+                <input [type]="PasswordVisivel ? 'text' : 'password'" [(ngModel)]="obj.senha" name="senha" required>
+                <label>Senha</label>
+                <i class="fas" [class.fa-eye]="!PasswordVisivel" [class.fa-eye-slash]="PasswordVisivel"
+                    (click)="SenhaVisivel()" id="eyeIcon"></i>
+            </div>
+            <div class="forgot-pass">
+                <a href="./esqueci-senha">Esqueceu sua senha?</a>
+            </div>
+            <button type="submit" class="btn" (click)="fazerLogin()">Entrar</button>
+            <div class="register-link">
+                Não tem uma conta? <button type="button" (click)="novoCadastro()">Cadastre-se</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div> -->
+    <div class="container_cadastro">
+        <div class="container_forms">
+            <h1>Login</h1>
+            <b class="mensagem">{{mensagem}}</b>
+            <form>
+                <div>
+                    <label for="">Email</label>
+                    <div class="input">
+                        <input class="content_input" type="email" [(ngModel)]="obj.email" name="email" required title="E-mail no modelo seuemail@gmai.com">
+                    </div>
+                </div>
+                <div>
+                    <label for="">Senha</label>
+                    <div class="input">
+                        <input class="content_input " [type]="PasswordVisivel ? 'text' : 'password'" [(ngModel)]="obj.senha"
+                            name="senha" required>  
+                            <i class="fas" [class.fa-eye]="!PasswordVisivel" [class.fa-eye-slash]="PasswordVisivel" (click)="SenhaVisivel()"
+                            id="eyeIcon"></i> 
+                    </div> 
+                </div>
+                    <a href="./esqueci-senha">Esqueceu sua senha?</a>
+                <div class="container_buttons">
+                    <button type="submit" class="btn" (click)="fazerLogin()">Entrar</button>
+                    <button type="btn"  class="btn"(click)="novoCadastro()">Cadastre-se</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+        
+        <!-- 
+    
+     <div>
+                <label for="">Email</label>
+                <div class="input">
+                    <input class="content_input" type="email" [(ngModel)]="obj.email" name="email" required
+                        title="E-mail no modelo seuemail@gmai.com">
+                </div>
+            </div>
+
+    
+    <label for="">Senha</label>
+    <div class="input">
+        <input class="content_input " [type]="PasswordVisivel ? 'text' : 'password'" [(ngModel)]="obj.senha"
+            name="senha" required>  
+            <i class="fas" [class.fa-eye]="!PasswordVisivel" [class.fa-eye-slash]="PasswordVisivel" (click)="SenhaVisivel()"
+            id="eyeIcon"></i> 
+    </div> 
+    
+    
+    
+    -->

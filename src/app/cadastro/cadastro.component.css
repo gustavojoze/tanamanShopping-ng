@@ -1,0 +1,140 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+.container_cadastro{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--corPrincipalFraca);
+    color: var(--corPrincipal);
+}
+.container_cadastro h1{
+    color: var(--corPrincipal);
+    font-size: 30px;
+    font-weight: 700;
+}
+.container_forms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--corSecundaria);
+    border-radius: 15px;
+    padding: 25px;
+    width: 600px;
+    max-width: 100%;
+    border: 5px  solid var(--corPrincipal);
+    color: var(--corPrincipal);
+}
+
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    grid-column-gap:30px;
+    width: 100%;
+}
+label{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.input{
+    width: 100%;
+    height: 25px ;
+    padding-left: 10px;
+    border: 2px solid var(--corPrincipal);
+    border-radius: 15px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.content_input{
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    border-style: none;
+    border-radius: 24px;
+    outline: none ;
+    border: none;
+    box-shadow: none;
+}
+.container_esquescer-senha{
+    height: 100px;
+}
+#eyeIcon {
+    color: var(--corVerdeClaro);
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.container_buttons{
+    width: 100%;
+    display: flex;
+    
+}
+
+.btn {
+    background-color: var(--corPrincipalFraca);
+    color: #ffff;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: var(--corVerdeClaro);
+}
+
+
+
+
+.btn_link {
+    text-align: center;
+    color: #fff ;
+    text-decoration: none;
+
+}
+
+ a{
+    color: #fff;
+    text-decoration: none;
+}
+/* esconde o titulo atual */
+.btn_link:hover a {
+    display: none
+  }
+  
+  /* "substitui" o titulo */
+  .btn_linker a:hover {
+    content: ">Titulo hover<"
+  }
+
+
+
+
+.toggle-password i {
+    font-size: 20px;
+    color: #333;
+}
+
+@media (orientation: portrait) {
+    .mensagem {
+        font-size: 15px;
+    }   
+}

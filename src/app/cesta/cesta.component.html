@@ -1,0 +1,32 @@
+<h1>Cesta de Compras</h1>
+<b class="mensagem">{{mensagem}} </b>
+
+<div class="button-container">
+    <button (click)="limparCesta()" [disabled]="cesta.itens.length === 0">Limpar</button>
+    <button *ngIf="cesta.itens.length > 0" (click)="finalizarCompra()">Finalizar</button>
+</div>
+    
+<div class="container-cesta">
+    <table border="2">
+        <tr>
+            <td>Codigo</td>
+            <td>Nome</td>
+            <td>Quantidade</td>
+            <td>Valor em R$</td>
+            <td>Total por Item em R$</td>
+            <td>Deseja remover?</td>
+        </tr>
+        <tr *ngFor="let item of cesta.itens">
+            <td>{{item.codigo}}</td>
+            <td>{{item.produto.nome}}</td>
+            <td>{{item.quantidade}}</td>
+            <td>{{item.produto.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</td>
+            <td>{{item.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</td>
+            <td><button (click)="removerItem(item)">Remover</button></td>
+        </tr>
+        <tr>
+            <td colspan="4">Total</td>
+            <td>R$ {{cesta.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</td>
+        </tr>
+    </table>
+</div>

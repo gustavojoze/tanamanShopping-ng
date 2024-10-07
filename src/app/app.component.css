@@ -1,0 +1,198 @@
+
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1F5014;
+    padding-inline: 10px;
+}
+.header_circulo_logo{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: #FFC654;
+    margin-block: 8px;
+    cursor: pointer;
+}
+
+header .header_logo{
+    width: 5.8rem;
+    height: 5.8rem;
+}
+
+
+.header_input{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 70%;
+    margin-inline:30px ;
+}
+.header_input input{
+    width: 100%;
+    height: 100%;
+    padding: 8px 16px;
+    border-radius: 24px;
+    border-style: none;
+    border-radius: 24px;
+}
+.header_input img{
+    position: absolute;
+    right: 10px;
+}
+
+
+
+
+.header_icons2{
+    display: flex;
+    gap: 10px;  
+}
+.header_icon{
+    cursor: pointer;
+}
+.container-iconcar{
+    position: relative;
+}
+.header_icons_cicleCount{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 5px;
+    height: 5px;
+    background-color: #426F38;
+    color: white;
+    padding: 10px;
+    border-radius: 100%;
+    position: absolute;
+    top: 20px;
+    right: 2px;
+}
+.header_icons_cicleCount p{
+    font-weight: 600;
+}
+
+
+.menu-sanduiche{
+    display: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: #fff;
+}
+.menu-sanduiche:hover {
+    color: var(--corVerdeClaro);
+}
+/* .menu-sanduiche {
+    
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: none;
+} */
+
+/* .menu-itens {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.menu-itens :hover {
+    color: #00b0ff;
+}
+
+.menu-itens.open {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+} */
+
+@media (max-width:503px){
+
+    .header_circulo_logo{
+        width: 80px;
+        height: 70px;
+    }
+    
+    header .header_logo{
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    
+    .header_input{
+        width: 70%;
+        height: 25px;
+    }
+    .header_input img{
+        position: absolute;
+        right: 5px;
+        padding: 2px;
+    }
+   
+    
+
+
+.menu-sanduiche {
+    position:relative;
+        font-size: 30px;
+        margin-right:20px ;
+    
+}
+
+.menu-sanduiche:hover .header_icons2 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom:100px;
+}
+
+
+
+.header_icon{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.header_icons_cicleCount p{
+    font-weight: 600;
+}
+    
+     
+}
+
+
+
+
+
+
+ /*
+.header_icons_cicleCount{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 5px;
+    height: 5px;
+    background-color: #426F38;
+    color: white;
+    padding: 10px;
+    border-radius: 100%;
+    position: absolute;
+    top: 20px;
+    right: 2px;
+} */
+
+@media (max-width: 768px) {
+   
+}
+    

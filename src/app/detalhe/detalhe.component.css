@@ -1,0 +1,128 @@
+/* /* .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-conteudo {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    color: white;
+    border-radius: 5%;
+    box-shadow: 0 0 20px #00b0ff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+  
+.modal-conteudo button {
+    margin: 10px;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #00b0ff;
+    padding: 5px 10px;
+} */
+ 
+.container_detalhe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+   background-color: var(--corSecundaria);
+   z-index: -1;
+}
+.detalhe{
+    background-color: var(--corPrincipal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    width: 70%;
+    height: 60%;   
+    margin-top: 100px;
+    padding: 1%;
+}
+.content_detalhe{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+img {
+    width: 80%;
+    height: 25%;
+    margin-bottom: 10px;
+}
+.container p {
+    max-width: 500px;
+    font-size: 40px;
+    }
+    
+    .valor-item {
+        margin-top: 10px;
+        font-weight: bold;
+        text-align: left;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+    }
+    
+    
+    button {
+    margin-top: 75px;
+    padding: 10px 20px;
+    background-color: var(--corPrincipalFraca);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+
+
+button:hover {
+    background-color: #2e9617e2;
+}
+
+
+
+/* .valor-item {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+.SemEstoque {
+    color: red;
+    margin-top: 2%;
+}
+
+@media (orientation: portrait) {
+    .container-detalhe {
+        max-width: 300px;
+    }
+} */

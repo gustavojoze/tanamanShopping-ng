@@ -1,0 +1,276 @@
+/* * {
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.container-cesta {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px #00b0ff;
+    width: 1400px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table td, table th {
+    padding: 12px;
+    text-align: left;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+table tr:nth-child(even) {
+    background-color: #282727;
+}
+
+table tr:nth-child(odd) {
+    background-color: #282727;
+}
+
+table td button {
+    background-color: #ff4d4d;
+    color: #000000;
+    font-weight: bold;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 55px;
+}
+
+table td button:hover {
+    background-color: #ff1a1a;
+}
+
+button {
+    background-color: #00b0ff;
+    color: #000000;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    padding: 12px 20px;
+    margin: 10px;
+    margin-top: 50px;
+    margin-left: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: -5px;
+    margin-right: 30px;
+}
+
+button:hover {
+    background-color: #0090e0;
+}
+
+button:disabled {
+    background-color: #555555;
+    cursor: not-allowed;
+}
+
+table td[colspan="4"] {
+    text-align: right;
+    font-weight: bold;
+    color: greenyellow;
+}
+
+.mensagem {
+    display: block;
+    text-align: center;
+    color: #00b0ff;
+    margin-top: 10px;
+    font-size: 20px;
+} */
+* {
+    font-family: 'Arial', sans-serif;
+}
+
+.container-cesta {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px #00b0ff;
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 3%;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.mensagem {
+    display: block;
+    text-align: center;
+    color: #00b0ff;
+    margin-top: 10px;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: -15px;
+    margin-right: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table td,
+table th {
+    padding: 12px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+table tr:nth-child(even),
+table tr:nth-child(odd) {
+    background-color: #282727;
+}
+
+table td button {
+    background-color: #ff1a1a;      
+    color: #000000;
+    font-weight: bold;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table td button:hover {
+    background-color: #d82828;
+}
+
+button {
+    background-color: #00b0ff;
+    color: #000000;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0090e0;
+}
+
+button:disabled {
+    background-color: #555555;
+    cursor: not-allowed;
+}
+
+table td[colspan="4"] {
+    text-align: right;
+    font-weight: bold;
+    color: greenyellow;
+}
+
+@media (max-width: 1200px) {
+    .container-cesta {
+        margin-left: 8%;
+        margin-right: 10%;
+        margin-top: 5%;
+        max-width: 80%;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .mensagem {
+        font-size: 16px;
+    }
+
+    table td,
+    table th {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    button.delete-btn {
+        padding: 5px;
+        font-size: 10px;
+    }
+}
+
+/* Responsividade para telas muito pequenas (smartphones) */
+@media (orientation: portrait) {
+    .container-cesta {
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 30%;
+        max-width: 87%;
+        padding: 15px;
+        overflow-x: scroll;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .mensagem {
+        font-size: 14px;
+    }
+
+    table td,
+    table th {
+        font-size: 12px;
+        padding: 6px;
+        overflow-y:auto;  
+    }
+
+    button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    button.delete-btn {
+        padding: 6px;
+        font-size: 10px;
+        margin-right: -4px;
+    }
+}
