@@ -14,6 +14,7 @@ import { Item } from '../model/item';
 export class CestaComponent {
   public mensagem: string = "Sua cesta";
   public cesta: Cesta = new Cesta();
+  public mostrarConfirmacao: boolean = false; 
 
   constructor(){
     let json = localStorage.getItem("cesta");
@@ -40,11 +41,18 @@ export class CestaComponent {
     this.mensagem = "Cesta vazia, adicione novos itens!";
   }
 
+  public abrirConfirmacao() {
+    this.mostrarConfirmacao = true;
+  }
+
+  public fecharConfirmacao() {
+    this.mostrarConfirmacao = false;
+  }
+
   public finalizarCompra() {
     this.mensagem = "Compra finalizada com sucesso!";
     localStorage.removeItem("cesta");
     this.cesta = new Cesta();
+    this.mostrarConfirmacao = false;
   }
-  
 }
-
