@@ -37,7 +37,9 @@ h1, h2, h3{
     font-family: 'Bukhari Script', sans-serif;
     font-weight: 100;
 }
-
+link{
+    border-radius: 100%;
+}
 
 /* 
 
