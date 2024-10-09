@@ -1,45 +1,40 @@
-<div class="container-cesta">
-    <h1>Cesta de Compras</h1>
-    <b class="mensagem">{{mensagem}}</b>
-  
-    <div class="button-container">
-      <button (click)="limparCesta()" [disabled]="cesta.itens.length === 0">Limpar</button>
-      <button *ngIf="cesta.itens.length > 0" (click)="abrirConfirmacao()">Finalizar</button>
-    </div>
-  
-    <table border="2">
-      <tr>
-        <th>Codigo</th>
-        <th>Nome</th>
-        <th>Quantidade</th>
-        <th>Valor em R$</th>
-        <th>Total por Item em R$</th>
-        <th>Remover?</th>
-      </tr>
-      <tr *ngFor="let item of cesta.itens">
-        <td>{{item.codigo}}</td>
-        <td>{{item.produto.nome}}</td>
-        <td>{{item.quantidade}}</td>
-        <td>R$ {{item.produto.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</td>
-        <td>R$ {{item.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</td>
-        <td class="remove-column"><button (click)="removerItem(item)">Remover</button></td>
-      </tr>
-      <tr *ngIf="cesta.itens.length === 0">
-        <td colspan="5">Nenhum item na cesta</td>
-        <td>
-            <button disabled>Remover</button>
-        </td>
-    </tr>
-      <tr>
-        <td colspan="4">Total</td>
-        <td>R$ {{cesta.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</td>
-      </tr>
-    </table>
+<main class="section_main">
+  <div class="secao-cesta">
+      <b class="mensagem">{{mensagem}} </b>
+      <hr class="separador">
+
+      <div class="cesta-container">
+          <div *ngFor="let item of cesta.itens" class="item-bloco">
+              <div class="produto-imagem">
+                  <img src="./{{item.codigo}}.jpg" alt="{{item.produto.nome}}">
+              </div>
+              <div class="produto-detalhes">
+                  <p>{{item.produto.nome}}</p>
+                  <p>Quantidade: {{item.quantidade}}</p>
+                  <p>Valor: R$ {{item.produto.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</p>
+              </div>
+              <button class="remover-btn" (click)="removerItem(item)">Remover</button>
+          </div>
+      </div>
+
+      <!-- Linha separadora -->
+      <hr class="separador">
+
+      <div class="total-bloco">
+          <p>Valor total: R$ {{cesta.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</p>
+      </div>
+
+      <div class="button-container">
+          <button class ="button-limpar" (click)="limparCesta()" [disabled]="cesta.itens.length === 0">Limpar</button>
+          <button class ="button-finalizar" *ngIf="cesta.itens.length > 0" (click)="finalizarCompra()">Finalizar</button>
+      </div>
+  </div>
+</main>
   
     <div *ngIf="mostrarConfirmacao" class="confirmacao-dialog">
       <p>Tem certeza de que deseja finalizar a compra?</p>
       <button (click)="finalizarCompra()">Sim</button>
       <button (click)="fecharConfirmacao()">Não</button>
     </div>
-  </div>
+  
   
