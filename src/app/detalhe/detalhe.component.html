@@ -1,16 +1,22 @@
-
 <h4>{{mensagem}}</h4>
 <div class="container_detalhe">
-    <div class="detalhe" *ngIf="item.codigo > 0">
-        <div class="content_detalhe">
-            <h1>{{item.nome}}</h1>
-            <img src="./{{item.codigo}}.jpg" width="250" alt="{{item.nome}}">
-        </div>
-        <div class="content_detalhe">
-            <p>{{item.descricao}}</p>
-        <div class="valor-item">R$ {{item.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</div>
-            <button *ngIf="item.quantidade > 0" (click)="adicionarCesta(item)">Comprar</button>
-        <div class="SemEstoque" *ngIf="item.quantidade <= 0">Sem estoque</div>
-        </div>
+  <div class="detalhe" *ngIf="item.codigo > 0">
+    <div class="content_detalhe">
+      <h1>{{item.nome}}</h1>
+      <img src="./{{item.codigo}}.jpg" width="250" alt="{{item.nome}}">
     </div>
+    <div class="content_detalhe">
+      <p>{{item.descricao}}</p>
+      <div class="valor-item">R$ {{item.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</div>
+      <button *ngIf="item.quantidade > 0" (click)="adicionarCesta(item)">Comprar</button>
+      <div class="SemEstoque" *ngIf="item.quantidade <= 0">Sem estoque</div>
+    </div>
+  </div>
+</div>
+
+<div id="modalConfirmacaoCarrinho" class="modal" *ngIf="mostrarModalCarrinho">
+  <div class="modal-conteudo">
+    <h2>Produto adicionado ao carrinho!</h2>
+    <button (click)="fecharModalCarrinho()">Fechar</button>
+  </div>
 </div>
