@@ -61,6 +61,7 @@ h1{
     cursor: pointer;
     margin-top: 10px;
     align-self: flex-end;
+    z-index: 1;
 }
 
 .card_botao:hover {
