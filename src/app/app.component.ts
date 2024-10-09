@@ -10,22 +10,5 @@ import { HeaderComponent } from './header/header.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  // menuAberto = false;
   title = 'project';
-  
-  // public IrCadastro() {
-  //   window.location.href = "./cadastro";
-  // }
-
-  // public IrCesta() {
-  //   window.location.href = "./cesta"
-  // }
-
-  // public IrVitrine() {
-  //   window.location.href = "./vitrine"
-  // }
-
-  // public toggleMenu() {
-  //   this.menuAberto = !this.menuAberto;
-  // }
 }

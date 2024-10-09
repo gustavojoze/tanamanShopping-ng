@@ -86,35 +86,7 @@ header .header_logo{
 .menu-sanduiche:hover {
     color: var(--corVerdeClaro);
 }
-/* .menu-sanduiche {
-    
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: none;
-} */
 
-/* .menu-itens {
-    display: flex;
-    position: absolute;
-    top: 20px;
-    right: 10px;
-}
-
-.menu-itens :hover {
-    color: #00b0ff;
-}
-
-.menu-itens.open {
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px;
-    border-radius: 5px;
-    position: absolute;
-    top: 50px;
-    right: 20px;
-} */
 
 @media (max-width:503px){
 
@@ -131,7 +103,7 @@ header .header_logo{
     
     .header_input{
         width: 70%;
-        height: 25px;
+        height: 15px;
     }
     .header_input img{
         position: absolute;
@@ -172,25 +144,6 @@ header .header_logo{
 }
 
 
-
-
-
-
- /*
-.header_icons_cicleCount{
-    display: none;
-    justify-content: center;
-    align-items: center;
-    width: 5px;
-    height: 5px;
-    background-color: #426F38;
-    color: white;
-    padding: 10px;
-    border-radius: 100%;
-    position: absolute;
-    top: 20px;
-    right: 2px;
-} */
 
 @media (max-width: 768px) {
    
