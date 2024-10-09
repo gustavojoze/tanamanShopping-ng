@@ -13,15 +13,19 @@ body {
     overflow-x: hidden;    
 }
 
+
   
+
+body::-webkit-scrollbar {
+    width: 12px; 
+}
+
   body::-webkit-scrollbar-track {
     background-color: var(--corPrincipalFraca);
-    border-radius: 10px;
   }
   
   body::-webkit-scrollbar-thumb {
-    background: var(--corPrincipal); 
-    border-radius: 10px;
+    background: var(--corVerdeClaro); 
   }
   
 p, h1, h2, h3{
