@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Produto } from '../model/produto';
 import { Cesta } from '../model/cesta';
 import { Item } from '../model/item';
-
 @Component({
   selector: 'app-detalhe',
   standalone: true,
@@ -14,8 +13,9 @@ import { Item } from '../model/item';
 export class DetalheComponent {
   public mensagem: string = "";
   public item: Produto = new Produto();
-  public count: number = 0; // Contador para o carrinho
-  public mostrarCarrinho: boolean = false; // Controla o display do elemento
+  public count: number = 0; 
+  public mostrarCarrinho: boolean = false;
+  public mostrarModalCarrinho: boolean = false;  
 
   constructor() {
     let json = localStorage.getItem("produto");
@@ -64,8 +64,12 @@ export class DetalheComponent {
     novaCesta.total = novaCesta.itens.reduce((total, it) => total + it.valor, 0);
     localStorage.setItem("cesta", JSON.stringify(novaCesta));
 
-    // Incrementa o contador e exibe o carrinho
     this.count += 1;
     this.mostrarCarrinho = true;
+    this.mostrarModalCarrinho = true;   
+  }
+
+  public fecharModalCarrinho() {
+    this.mostrarModalCarrinho = false; 
   }
 }
