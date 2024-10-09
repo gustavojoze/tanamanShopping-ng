@@ -25,28 +25,30 @@ export class CestaComponent {
     }
   }
 
-  public removerItem(obj:Item) {
-    this.cesta.itens = this.cesta.itens.filter(item => item != obj);
-    this.cesta.total = 0;
-    for(let i=0; i<this.cesta.itens.length; i++){
-      this.cesta.total = this.cesta.itens[i].valor+this.cesta.total;
+  public removerItem(obj: Item) {
+    let itemEncontrado = this.cesta.itens.find(item => item.codigo === obj.codigo);
+  
+    if (itemEncontrado) {
+      if (itemEncontrado.quantidade > 1) {
+        itemEncontrado.quantidade--;
+        itemEncontrado.valor = itemEncontrado.quantidade * itemEncontrado.produto.valor;
+      } 
+      else {
+        this.cesta.itens = this.cesta.itens.filter(item => item.codigo !== obj.codigo);
+      }
+        this.cesta.total = this.cesta.itens.reduce((total, item) => total + item.valor, 0);
+        localStorage.setItem("cesta", JSON.stringify(this.cesta));
     }
-    console.log(this.cesta);
-    localStorage.setItem("cesta", JSON.stringify(this.cesta));
+      if (this.cesta.itens.length === 0) {
+      this.mensagem = "Cesta vazia, adicione novos itens!";
+      localStorage.removeItem("cesta");
+    }
   }
 
   public limparCesta(){
     localStorage.removeItem("cesta");
     this.cesta = new Cesta();
     this.mensagem = "Cesta vazia, adicione novos itens!";
-  }
-
-  public abrirConfirmacao() {
-    this.mostrarConfirmacao = true;
-  }
-
-  public fecharConfirmacao() {
-    this.mostrarConfirmacao = false;
   }
 
   public finalizarCompra() {
