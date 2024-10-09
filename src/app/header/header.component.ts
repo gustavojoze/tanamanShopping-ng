@@ -20,6 +20,8 @@ export class HeaderComponent {
     }
   }
    menuAberto = false;
+
+
   public IrCadastro() {
     window.location.href = "./cadastro";
   }
@@ -30,6 +32,10 @@ export class HeaderComponent {
 
   public IrVitrine() {
     window.location.href = "./vitrine"
+  }
+
+  public IrLogin() {
+    window.location.href = "./login"
   }
 
   public toggleMenu() {
