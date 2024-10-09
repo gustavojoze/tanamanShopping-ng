@@ -44,6 +44,11 @@ main {
     background-color: var(--corVerdeClaro);
 }
 
+h4{
+    font-family:"Inter", sans-serif; 
+    color: #246515       ;
+}
+
 h1{
     color: var(--corPrincipal);
     margin-top: 120px;

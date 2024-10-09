@@ -1,6 +1,6 @@
 <main class="section_main">
   <h1 class="mensagem">{{mensagem}}</h1>
-  <h4 *ngIf="produtosFiltrados.length <= 0">Não há nenhum produto na vitrine</h4>
+  <h4 *ngIf="produtosFiltrados.length <= 0">Não há nenhum produto com esse nome</h4>
   <div class="container_cards">
     <div class="card" *ngFor="let item of produtosFiltrados">
       <img src="./{{item.codigo}}.jpg" alt="{{item.nome}}" class="card_img" (click)="verDetalhe(item)">
