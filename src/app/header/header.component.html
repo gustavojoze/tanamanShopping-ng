@@ -5,10 +5,10 @@
     <div class="header_circulo_logo" (click)="IrVitrine()">
         <img src="./assets/borcellone.png" class="header_logo" alt="imagem da logo">
     </div>
-        <div class="header_input">
-            <input type="text" [(ngModel)]="filtro" placeholder="Digite o que você precisa" >
-            <img src="./assets/iconSearch.svg" class="header_input_icon" (click)="fazerBusca()" alt=""> 
-        </div>
+    <div class="header_input">
+        <input type="text" [(ngModel)]="filtro" placeholder="Digite o que você precisa" (keyup.enter)="fazerBusca()">
+        <img src="./assets/iconSearch.svg" class="header_input_icon" (click)="fazerBusca()" alt=""> 
+      </div>
         <div class="header_icons">
             <div class="menu-sanduiche" (click)="toggleMenu()">
                 <i class="fa-solid fa-bars"></i>

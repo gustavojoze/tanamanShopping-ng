@@ -138,7 +138,7 @@ export class VitrineComponent {
 
   
     public adicionarCesta(item: Produto, event: MouseEvent) {  
-      // Impede que o evento clique se propague para o elemento pai
+     
       event.stopPropagation();
   
       let cesta = JSON.parse(localStorage.getItem("cesta") || '[]');
