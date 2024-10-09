@@ -43,6 +43,7 @@ header .header_logo{
 .header_input img{
     position: absolute;
     right: 10px;
+    cursor: pointer;
 }
 
 
