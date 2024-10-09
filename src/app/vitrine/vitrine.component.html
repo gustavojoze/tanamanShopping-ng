@@ -7,9 +7,18 @@
       <img src="./{{item.codigo}}.jpg" alt="{{item.nome}}" class="card_img" (click)="verDetalhe(item)">
       <h3 class="card_titulo">{{item.nome}}</h3>
       <p class="card_preco">R$ {{item.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</p>
-      <button class="card_botao" *ngIf="item.quantidade" (click)="adicionarCesta(item)">
+      <button class="card_botao" *ngIf="item.quantidade" (click)="adicionarCesta(item, $event)">
         Comprar
       </button>
     </div>
   </div>
+
+  
+<div id="modalConfirmacaoCarrinho" class="modal" *ngIf="mostrarModalCarrinho">
+  <div class="modal-conteudo">
+    <h2>Produto adicionado ao carrinho!</h2>
+    <button (click)="fecharModalCarrinho()" class="modal_botao">Fechar</button>
+  </div>
+</div>
+
 </main>

@@ -21,6 +21,17 @@
     font-size: 20px;
   }
 
+  .modal_botao{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--corPrincipalFraca);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+  }
+
+
 .container_detalhe {
     display: flex;
     justify-content: center;
