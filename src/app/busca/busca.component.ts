@@ -119,7 +119,6 @@ export class BuscaComponent {
 ]
 
   
-
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -128,75 +127,84 @@ export class BuscaComponent {
     });
   }
 
-
-  public verDetalhe(item:Produto) {
-    localStorage.setItem("produto", JSON.stringify(item));
-    window.location.href="./detalhe";
+  get produtosFiltrados(): Produto[] {
+    if (!this.filtro) {
+      return this.lista;
+    }
+    const filtroLower = this.filtro.toLowerCase();
+    return this.lista.filter(produto =>
+      produto.nome.toLowerCase().includes(filtroLower) ||
+      produto.descricao.toLowerCase().includes(filtroLower) ||
+      produto.keywords.toLowerCase().includes(filtroLower)
+    );
   }
-  
-  public mostrarModal: boolean = false;
-  public mostrarModalCarrinho: boolean = false;
+
+  public verDetalhe(item: Produto) {
+    localStorage.setItem("produto", JSON.stringify(item));
+    window.location.href = "./detalhe";
+  }
+
+
   public produtoSelecionado: Produto | null = null;
 
-  public adicionarCesta(item: Produto) {
-    this.produtoSelecionado = item;
-    this.mostrarModal = true;
-  }
+  public item: Produto = new Produto();
+  public count: number = 0; 
+  public mostrarCarrinho: boolean = false;
+  public mostrarModalCarrinho: boolean = false;  
 
-  public confirmarAdicao(obj: Produto | null) {
-    if (obj) {
+
+
+  
+    public adicionarCesta(item: Produto, event: MouseEvent) {  
+      // Impede que o evento clique se propague para o elemento pai
+      event.stopPropagation();
+  
       let cesta = JSON.parse(localStorage.getItem("cesta") || '[]');
       let jsonCliente = localStorage.getItem("cadastro");
       let novaCesta: Cesta = new Cesta();
-      let item: Item = new Item();
+      let itemCesta: Item = new Item();
   
       if (cesta.length === 0) {
-        item.codigo = obj.codigo;
-        item.produto = obj;
-        item.quantidade = 1;
-        item.valor = obj.valor;
-        novaCesta.codigo = 1;
-        novaCesta.total = obj.valor;
-        novaCesta.itens.push(item);
-        if (jsonCliente != null) novaCesta.cliente = JSON.parse(jsonCliente);
+          itemCesta.codigo = item.codigo;
+          itemCesta.produto = item;
+          itemCesta.quantidade = 1;
+          itemCesta.valor = item.valor;
+          novaCesta.codigo = 1;
+          novaCesta.total = item.valor;
+          novaCesta.itens.push(itemCesta);
+          if (jsonCliente != null) novaCesta.cliente = JSON.parse(jsonCliente);
       } else {
-        let achou = false;
-        novaCesta = cesta;
-        for (let i = 0; i < novaCesta.itens.length; i++) {
-          if (novaCesta.itens[i].codigo === obj.codigo) {
-            novaCesta.itens[i].quantidade += 1;
-            novaCesta.itens[i].valor = novaCesta.itens[i].quantidade * novaCesta.itens[i].produto.valor;
-            achou = true;
-            break;
+          let achou = false;
+          novaCesta = cesta;
+          for (let i = 0; i < novaCesta.itens.length; i++) {
+              if (novaCesta.itens[i].codigo === item.codigo) {
+                  novaCesta.itens[i].quantidade += 1;
+                  novaCesta.itens[i].valor = novaCesta.itens[i].quantidade * novaCesta.itens[i].produto.valor;
+                  achou = true;
+                  break;
+              }
           }
-        }
-        if (!achou) {
-          item.codigo = obj.codigo;
-          item.produto = obj;
-          item.quantidade = 1;
-          item.valor = obj.valor;
-          novaCesta.itens.push(item);
-        }
+          if (!achou) {
+              itemCesta.codigo = item.codigo;
+              itemCesta.produto = item;
+              itemCesta.quantidade = 1;
+              itemCesta.valor = item.valor;
+              novaCesta.itens.push(itemCesta);
+          }
       }
   
       novaCesta.total = novaCesta.itens.reduce((total, it) => total + it.valor, 0);
       localStorage.setItem("cesta", JSON.stringify(novaCesta));
-      this.mostrarModalCarrinho = true;
-      this.fecharModal();
-    }
-  }  
   
-
-  public cancelarAdicao() {
-    this.fecharModal();
+      this.count += 1;
+      this.mostrarCarrinho = true;
+      this.mostrarModalCarrinho = true;   
   }
-
-  public fecharModal() {
-    this.mostrarModal = false;
-    this.produtoSelecionado = null;
-  }
-
+  
   public fecharModalCarrinho() {
-    this.mostrarModalCarrinho = false;
+    this.mostrarModalCarrinho = false; 
   }
+
 }
+
+

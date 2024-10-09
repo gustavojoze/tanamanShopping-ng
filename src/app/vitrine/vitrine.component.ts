@@ -181,7 +181,6 @@ export class VitrineComponent {
       this.count += 1;
       this.mostrarCarrinho = true;
       this.mostrarModalCarrinho = true;   
-
   }
   
   public fecharModalCarrinho() {

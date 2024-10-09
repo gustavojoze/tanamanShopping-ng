@@ -7,6 +7,43 @@ main {
     align-items: center;
     justify-content: center;
 }
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-conteudo {
+    background-color: var(--corPrincipal);
+    outline: 7px solid var(--corPrincipalFraca);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.modal_botao {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--corPrincipalFraca);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.modal_botao:hover {
+    background-color: var(--corVerdeClaro);
+}
+
 h1{
     color: var(--corPrincipal);
     margin-top: 120px;
