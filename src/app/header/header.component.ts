@@ -38,9 +38,6 @@ export class HeaderComponent {
   }
 
 
-  public IrLogin() {
-    window.location.href = "./login"
-  }
 
   public toggleMenu() {
     this.menuAberto = !this.menuAberto;
