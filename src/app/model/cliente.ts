@@ -3,7 +3,6 @@ export class Cliente {
     public nome: string = "";
     public email: string = "";
     public cpf: string = "";
-    public rg: string = "";
     public telefone: string = "";
     public logradouro: string = "";
     public cep: string = "";
