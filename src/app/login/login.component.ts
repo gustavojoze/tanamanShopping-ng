@@ -23,7 +23,7 @@ export class LoginComponent {
     }
     if (this.obj.email === "admin@gmail.com" && this.obj.senha === "123456") {
       localStorage.setItem("cadastro", JSON.stringify(this.obj)); 
-      window.location.href = "./cadastro";  
+      window.location.href = "./vitrine";  
     } else {
       this.mensagem = "E-mail ou senha inválidos !!!";
       localStorage.removeItem("cadastro");
