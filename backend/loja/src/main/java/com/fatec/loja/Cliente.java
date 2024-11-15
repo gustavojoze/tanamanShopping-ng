@@ -17,11 +17,12 @@ public class Cliente {
     public String cpf;
     public String logradouro;
     public String cep;
+    public String complemento;
     public String cidade;
     
     public Cliente(){}
     public Cliente(int codigo, String nome, String email, String senha, String telefone, String cpf,
-            String logradouro, String cep, String cidade ) {
+            String logradouro, String cep, String cidade, String complemento ) {
         this.codigo = codigo;
         this.nome = nome;
         this.email = email;
@@ -31,6 +32,7 @@ public class Cliente {
         this.logradouro = logradouro;
         this.cep = cep;
         this.cidade = cidade;
+        this.complemento = complemento;
     }
     public int getCodigo() {
         return codigo;
@@ -86,6 +88,11 @@ public class Cliente {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-
-    
+    public String getComplemento() {
+        return complemento;
+    }
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+ 
 }
