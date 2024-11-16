@@ -81,16 +81,17 @@ export class CadastroComponent {
                     console.log(err)
                   }
              })
-            //  this.mensagem = "Parabéns! Seu cadastro foi realizado com sucesso!";
-            //  this.obj.nome = ""
-            //  this.obj.email = ""
-            //  this.obj.cpf = ""
-            //  this.obj.telefone = ""
-            //  this.obj.logradouro = ""
-            //  this.obj.cep = ""
-            //  this.obj.cidade = ""
-            //  this.obj.senha = ""
-            //  this.obj.confirmarSenha = ""
+             this.mensagem = "Parabéns! Seu cadastro foi realizado com sucesso!";
+             this.obj.nome = ""
+             this.obj.email = ""
+             this.obj.cpf = ""
+             this.obj.telefone = ""
+             this.obj.logradouro = ""
+             this.obj.complemento = ""
+             this.obj.cep = ""
+             this.obj.cidade = ""
+             this.obj.senha = ""
+             this.obj.confirmarSenha = ""
         } else {
             this.mensagem = "Senha e a confirmação devem ser iguais";
         }
