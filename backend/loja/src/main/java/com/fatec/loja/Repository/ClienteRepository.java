@@ -1,4 +1,4 @@
-package com.fatec.loja;
+package com.fatec.loja.Repository;
 
 import java.util.Optional;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import jakarta.persistence.NamedNativeQueries;
+import com.fatec.loja.Model.Cliente;
 
 @Repository
 public interface ClienteRepository extends

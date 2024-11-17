@@ -1,4 +1,4 @@
-package com.fatec.loja;
+package com.fatec.loja.Model;
 
 public class Item {
     private int codigo;
