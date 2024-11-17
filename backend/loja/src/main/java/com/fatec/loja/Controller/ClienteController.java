@@ -21,15 +21,19 @@ public class ClienteController {
     ClienteRepository bd;
 
     @PostMapping("/api/cliente")
-    public String gravar(@RequestBody Cliente obj){
-        bd.save(obj);
-        return "O cliente "+ obj.getNome() + " foi salvo corretamente!";
+    public void gravar (@RequestBody Cliente obj){
+         if (bd.verificaEmail(obj.getEmail()).isPresent()) {
+        throw new RuntimeException("Email já cadastrado");
     }
 
-    @PutMapping("/api/cliente")
-    public String alterar(@RequestBody Cliente obj){
         bd.save(obj);
-        return "O cliente "+ obj.getNome() + " foi alterado corretamente!";
+    }
+    
+
+    @PutMapping("/api/cliente")
+    public void alterar(@RequestBody Cliente obj){
+        bd.save(obj);
+
     }
 
     @GetMapping("/api/cliente/{codigo}")
@@ -43,9 +47,9 @@ public class ClienteController {
     }
 
     @DeleteMapping("/api/cliente/{codigo}")
-    public String remover(@PathVariable int codigo){
+    public void remover(@PathVariable int codigo){
         bd.deleteById(codigo);
-        return "Registro "+ codigo + " removido com suceso!";
+       
     }
 
     @GetMapping("/api/clientes")
@@ -74,6 +78,12 @@ public class ClienteController {
         } else {
             return null;
         }
+    }
+
+    @GetMapping("/api/cliente/verificar-email/{email}")
+    public boolean verificarEmail(@PathVariable String email) {
+        Optional<Cliente> cliente = bd.verificaEmail(email);
+        return cliente.isPresent(); 
     }
 
 }
