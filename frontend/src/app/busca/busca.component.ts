@@ -7,6 +7,7 @@ import { Item } from '../model/item';
 import { Cesta } from '../model/cesta';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-busca',
   standalone: true,
@@ -17,32 +18,35 @@ import { FormsModule } from '@angular/forms';
 export class BuscaComponent {
   public mensagem: string = "Seja Bem-Vindo á Tanaman";
   public filtro: string = ""
-  public lista: Produto[] =[]
+  public lista: Produto[] = []
   public termo: string = "";
 
 
   constructor(private service: ProdutoService, private route: ActivatedRoute){}
 
-  pesquisar(){
-    this.service.pesquisar(this.termo).subscribe({
-      next:(data) =>{
-        this.lista = data
-        if(this.lista.length<=0){
-          this.mensagem="nenhum produto encontrado!!";
-        } else {
-           this.mensagem= this.lista.length +" produto(s) encontrados com a palavra "+ this.termo;  
-        }
-      },
-      error:(msg) =>{this.mensagem="ocorreu um erro, volte mais tarde"}
-    });
-  }
-
-
-  // constructor(private route: ActivatedRoute) {}
-
+  
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.filtro = params['q'] || '';
+      if (this.filtro) {
+        this.pesquisar(this.filtro);
+      }
+    });
+  }
+
+  pesquisar(termo: string): void {
+    this.service.pesquisar(termo).subscribe({
+      next: (data) => {
+        this.lista = data;
+        if (this.lista.length <= 0) {
+          this.mensagem = "Nenhum produto encontrado!";
+        } else {
+          this.mensagem = `${this.lista.length} produto(s) encontrado(s) com a palavra "${termo}".`;
+        }
+      },
+      error: () => {
+        this.mensagem = "Ocorreu um erro, volte mais tarde.";
+      }
     });
   }
 
@@ -57,7 +61,7 @@ export class BuscaComponent {
       produto.keywords.toLowerCase().includes(filtroLower)
     );
   }
-
+  
   public verDetalhe(item: Produto) {
     localStorage.setItem("produto", JSON.stringify(item));
     window.location.href = "./detalhe";
