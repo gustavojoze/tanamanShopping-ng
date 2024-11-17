@@ -1,6 +1,5 @@
-package com.fatec.loja;
+package com.fatec.loja.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fatec.loja.Model.Cliente;
+import com.fatec.loja.Repository.ClienteRepository;
 
 @CrossOrigin(origins = "*")
 @RestController

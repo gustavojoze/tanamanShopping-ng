@@ -1,4 +1,4 @@
-package com.fatec.loja;
+package com.fatec.loja.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
