@@ -75,23 +75,37 @@ export class CadastroComponent {
     ) {
         if (this.obj.senha === this.obj.confirmarSenha) {
           //  localStorage.setItem("cadastro", JSON.stringify(this.obj));
+                
+          this.service.verificarEmailExistente(this.obj.email).subscribe({
+            next: (emailExistente: boolean) => {
+              if (emailExistente) {
+                this.mensagem = "Já existe um usuário com esse email cadastrado!";
+              } else {
                 this.service.inserir(this.obj).subscribe({
-                  next:(data)=>{this.mensagem="Parabéns! Seu cadastro foi realizado com sucesso!"},
-                  error:(err)=>{this.mensagem="ocorreu um problema tente mais tarde!"
-                    console.log(err)
+                  next: (data) => {
+                    this.mensagem = "Parabéns! Seu cadastro foi realizado com sucesso!";
+                    this.obj = new Cliente(); 
+                  },
+                  error: (err) => {
+                    this.mensagem = "Ocorreu um problema, tente mais tarde!";
+                    console.log(err);
                   }
-             })
-             this.mensagem = "Parabéns! Seu cadastro foi realizado com sucesso!";
-             this.obj.nome = ""
-             this.obj.email = ""
-             this.obj.cpf = ""
-             this.obj.telefone = ""
-             this.obj.logradouro = ""
-             this.obj.complemento = ""
-             this.obj.cep = ""
-             this.obj.cidade = ""
-             this.obj.senha = ""
-             this.obj.confirmarSenha = ""
+                });
+                // Limpeza dos campos após cadastro
+                this.obj.nome = "";
+                this.obj.email = "";
+                this.obj.cpf = "";
+                this.obj.telefone = "";
+                this.obj.logradouro = "";
+                this.obj.complemento = "";
+                this.obj.cep = "";
+                this.obj.cidade = "";
+                this.obj.senha = "";
+                this.obj.confirmarSenha = "";
+              }
+            },
+           
+          });
         } else {
             this.mensagem = "Senha e a confirmação devem ser iguais";
         }

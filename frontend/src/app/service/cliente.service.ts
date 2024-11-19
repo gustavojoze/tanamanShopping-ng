@@ -34,9 +34,14 @@ import { Cliente } from '../model/cliente';
   providedIn: 'root'
 })
 export class ClienteService {
+  private apiUrl = 'http://localhost:8080/api/cliente'; 
 
   constructor(private http : HttpClient) { }
 
+  verificarEmailExistente(email: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/verificar-email/${email}`);
+  }
+  
   inserir(obj: Cliente) : Observable<Object>{
     return this.http.post("http://localhost:8080/api/cliente", obj, { responseType: 'text' });
   }
@@ -52,5 +57,9 @@ export class ClienteService {
 
   remover(codigo: number) : Observable<any> {
     return this.http.delete("http://localhost:8080/api/cliente/"+ codigo, { responseType: 'text' });
+  }
+
+  login(obj: Cliente): Observable<Cliente | null> {
+    return this.http.post<Cliente>("http://localhost:8080/api/cliente/login", obj);
   }
 }
