@@ -24,7 +24,7 @@ public class ClienteController {
 
     @PostMapping("/api/cliente")
     public void gravar (@RequestBody Cliente obj){
-         if (bd.verificaEmail(obj.getEmail()).isPresent()) {
+         if (bd.verificacaoEmail(obj.getEmail()).isPresent()) {
         throw new RuntimeException("Email já cadastrado");
     }
 
@@ -84,7 +84,7 @@ public class ClienteController {
 
     @GetMapping("/api/cliente/verificar-email/{email}")
     public boolean verificarEmail(@PathVariable String email) {
-        Optional<Cliente> cliente = bd.verificaEmail(email);
+        Optional<Cliente> cliente = bd.verificacaoEmail(email);
         return cliente.isPresent(); 
     }
 

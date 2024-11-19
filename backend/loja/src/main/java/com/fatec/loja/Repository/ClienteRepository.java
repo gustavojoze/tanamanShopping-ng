@@ -21,6 +21,6 @@ JpaRepository<Cliente,Integer> {
     Optional<Cliente> recuperaSenha(String email);
 
     @Query(value = "select * from Cliente  where email=?1", nativeQuery = true)
-    Optional<Cliente> verificaEmail(String email);
+    Optional<Cliente> verificacaoEmail(String email);
 
 }

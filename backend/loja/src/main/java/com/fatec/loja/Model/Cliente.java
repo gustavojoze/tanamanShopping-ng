@@ -4,15 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "cliente")
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    public Integer codigo;
-    
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int codigo;
     public String nome;
     public String email;
     public String senha;
@@ -22,10 +19,10 @@ public class Cliente {
     public String cep;
     public String complemento;
     public String cidade;
-    
+
     public Cliente(){}
-    public Cliente(Integer codigo, String nome, String email, String senha, String telefone, String cpf,
-            String logradouro, String cep, String cidade, String complemento ) {
+    public Cliente(int codigo, String nome, String email, String senha, String telefone, String cpf,
+                   String logradouro, String cep, String cidade, String complemento ) {
         this.codigo = codigo;
         this.nome = nome;
         this.email = email;
@@ -37,10 +34,10 @@ public class Cliente {
         this.cidade = cidade;
         this.complemento = complemento;
     }
-    public Integer Codigo() {
+    public int getCodigo() {
         return codigo;
     }
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
     public String getNome() {
@@ -97,5 +94,5 @@ public class Cliente {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
- 
+
 }
