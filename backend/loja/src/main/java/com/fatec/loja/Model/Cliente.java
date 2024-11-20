@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int codigo;
     public String nome;
     public String email;
@@ -19,10 +19,10 @@ public class Cliente {
     public String cep;
     public String complemento;
     public String cidade;
-    
+
     public Cliente(){}
     public Cliente(int codigo, String nome, String email, String senha, String telefone, String cpf,
-            String logradouro, String cep, String cidade, String complemento ) {
+                   String logradouro, String cep, String cidade, String complemento ) {
         this.codigo = codigo;
         this.nome = nome;
         this.email = email;
@@ -94,5 +94,5 @@ public class Cliente {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
- 
+
 }

@@ -4,13 +4,15 @@ import { Produto } from '../model/produto';
 import { Item } from '../model/item';
 import { Cesta } from '../model/cesta';
 import { ProdutoService } from '../service/produto.service';
+import { NotificationComponent } from '../notification/notification.component'; 
 
 @Component({
   selector: 'app-vitrine',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NotificationComponent],
   templateUrl: './vitrine.component.html',
   styleUrl: './vitrine.component.css'
+  
 })
 
 export class VitrineComponent {
