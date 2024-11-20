@@ -1,0 +1,99 @@
+<div class="container_cadastro">
+    <div class="container_forms">
+        <h1>Dados</h1>
+        <div class="mensagem"><b>
+                <pre>{{ mensagem }}</pre>
+            </b></div>
+        <br><br>
+        <form>
+            <div>
+                <label for="">Nome</label>
+                <div class="input">
+                    <input class="content_input" type="text" [(ngModel)]="obj.nome" name="nome" required
+                        title="Nome completo">
+                </div>
+            </div>
+
+            <div>
+                <label for="">Cpf</label>
+                <div class="input">
+                    <input class="content_input" type="text" [(ngModel)]="obj.cpf" name="cpf" required pattern="\d{11}"
+                        title="Digite um CPF válido com 11 números">
+                </div>
+            </div>
+
+            <div>
+                <label for="">Telefone</label>
+                <div class="input">
+                    <input class="content_input" type="tel" [(ngModel)]="obj.telefone" name="telefone" required
+                        pattern="\d{10,11}" title="Digite um número de telefone válido">
+                </div>
+            </div>
+
+            <div>
+                <label for="">Email</label>
+                <div class="input">
+                    <input class="content_input" type="email" [(ngModel)]="obj.email" name="email" required
+                        title="E-mail no modelo seuemail@gmai.com">
+                </div>
+            </div>
+
+            <div>
+                <label for="">Cep</label>
+                <div class="input">
+                    <input class="content_input" type="text" [(ngModel)]="obj.cep" name="cep" required pattern="\d{8}"
+                        title="Digite um CEP válido com 8 números">
+
+                </div>
+            </div>
+
+            <div>
+                <label for="">Complemento</label>
+                <div class="input">
+                    <input class="content_input" type="text"  [(ngModel)]="obj.complemento" name="complemento">
+                </div>
+            </div>
+
+            <div>
+                <label for="">Logradoura</label>
+                <div class="input">
+                    <input class="content_input" type="text" [(ngModel)]="obj.logradouro" name="logradouro" required>
+                </div>
+            </div>
+            <div>
+                <label for="">Cidade</label>
+                <div class="input input_password">
+                    <input class="content_input" type="text" [(ngModel)]="obj.cidade" name="cidade" required>
+                </div>
+            </div>
+            <div>
+                <label for="">Senha</label>
+                <div class="input">
+                    <input class="content_input " [type]="PasswordVisivel ? 'text' : 'password'" [(ngModel)]="obj.senha"
+                        name="senha" required>  
+                        <i class="fas" [class.fa-eye]="!PasswordVisivel" [class.fa-eye-slash]="PasswordVisivel" (click)="SenhaVisivel()"
+                        id="eyeIcon"></i> 
+                </div>
+            </div>
+
+            <div>
+                <label for="">Confirme a Senha</label>
+                <div class="input input_password">
+                    <input class="content_input"  [type]="ConfirmaVisivel ? 'text' : 'password'"
+                        [(ngModel)]="obj.confirmarSenha" name="confirmarSenha" required>
+                        <i class="fas" [class.fa-eye]="!ConfirmaVisivel" [class.fa-eye-slash]="ConfirmaVisivel" (click)="ConfirmaSenhaVisivel()"
+                            id="eyeIcon"></i>
+                </div>
+            </div>
+            <button type="submit" class="btn" (click)="gravar()">AtualizarDados</button>
+            <button type="submit" class="btn" (click)="deslogar()">Logout</button>
+            
+        </form>
+    </div>
+</div>
+<!-- 
+nesse caso tem que fazer o crud, falta: remover, alterar e 
+<button (click)="gravar();">Gravar</button>
+<button (click)="gravar();">Gravar</button>
+<button (click)="gravar();">Gravar</button>
+<button (click)="gravar();">Gravar</button> -->
