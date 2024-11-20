@@ -1,19 +1,31 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Cliente } from '../model/cliente';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
   standalone: true,
-  imports: [FormsModule]
+  imports: [FormsModule, CommonModule]
 })
 
 export class HeaderComponent {
   public filtro: string = '';
+  public userLogado:Cliente = new Cliente();
 
-  constructor(private router: Router) {} 
+  constructor(private router: Router) {
+    let clienteJSON = localStorage.getItem('cliente');
+    if(clienteJSON != null){
+      this.userLogado = JSON.parse(clienteJSON);
+    }
+    else{
+      this.userLogado = new Cliente();
+    }
+  } 
   public fazerBusca() {
     if (this.filtro.trim()) {
       this.router.navigate(['/busca'], { queryParams: { q: this.filtro } });
@@ -33,10 +45,22 @@ export class HeaderComponent {
   public IrVitrine() {
     window.location.href = "./vitrine"
   }
+
   public IrLogin() {
-    window.location.href = "./login"
+    this.router.navigate(['/login']); 
+  }
+  
+  public IrUserLogado(){
+    this.router.navigate(['/usuario-logado']);
   }
 
+  public userClick() {
+    if (this.userLogado.codigo !== 0) {
+      this.IrUserLogado();
+    } else {
+      this.IrLogin();
+    }
+  }
 
 
   public toggleMenu() {
