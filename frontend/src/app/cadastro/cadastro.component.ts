@@ -82,7 +82,7 @@ export class CadastroComponent {
                 this.mensagem = "Já existe um usuário com esse email ou cpf cadastrado!";
               } else {
                 this.service.inserir(this.obj).subscribe({
-                  next: () => {
+                  next: (data) => {
                     this.mensagem = "Parabéns! Seu cadastro foi realizado com sucesso!";
                     // this.obj.nome = "";
                     // this.obj.email = "";

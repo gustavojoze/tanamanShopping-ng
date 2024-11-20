@@ -52,7 +52,7 @@ export class ClienteService {
   }
 
   pesquisar(codigo: number) : Observable<any> {
-    return this.http.get("http://localhost:8080/api/cliente/"+ codigo, { responseType: 'text' });
+    return this.http.get("http://localhost:8080/api/cliente/"+ codigo);
   }
 
   remover(codigo: number) : Observable<any> {
