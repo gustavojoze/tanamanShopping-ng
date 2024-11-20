@@ -77,31 +77,31 @@ export class CadastroComponent {
           //  localStorage.setItem("cadastro", JSON.stringify(this.obj));
                 
           this.service.verificarEmailExistente(this.obj.email).subscribe({
-            next: (emailExistente: boolean) => {
+            next: (emailExistente) => {
               if (emailExistente) {
-                this.mensagem = "Já existe um usuário com esse email cadastrado!";
+                this.mensagem = "Já existe um usuário com esse email ou cpf cadastrado!";
               } else {
                 this.service.inserir(this.obj).subscribe({
-                  next: (data) => {
+                  next: () => {
                     this.mensagem = "Parabéns! Seu cadastro foi realizado com sucesso!";
-                    this.obj = new Cliente(); 
+                    // this.obj.nome = "";
+                    // this.obj.email = "";
+                    // this.obj.cpf = "";
+                    // this.obj.telefone = "";
+                    // this.obj.logradouro = "";
+                    // this.obj.complemento = "";
+                    // this.obj.cep = "";
+                    // this.obj.cidade = "";
+                    // this.obj.senha = "";
+                    // this.obj.confirmarSenha = "";
+                  this.obj = new Cliente()
                   },
                   error: (err) => {
                     this.mensagem = "Ocorreu um problema, tente mais tarde!";
                     console.log(err);
                   }
                 });
-                // Limpeza dos campos após cadastro
-                this.obj.nome = "";
-                this.obj.email = "";
-                this.obj.cpf = "";
-                this.obj.telefone = "";
-                this.obj.logradouro = "";
-                this.obj.complemento = "";
-                this.obj.cep = "";
-                this.obj.cidade = "";
-                this.obj.senha = "";
-                this.obj.confirmarSenha = "";
+                
               }
             },
            

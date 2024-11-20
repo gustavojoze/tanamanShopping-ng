@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int codigo;
+    public Integer codigo;
     public String nome;
     public String email;
     public String senha;
