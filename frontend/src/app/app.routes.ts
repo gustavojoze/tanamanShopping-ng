@@ -6,15 +6,17 @@ import { LoginComponent } from './login/login.component';
 import { VitrineComponent } from './vitrine/vitrine.component';
 import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { UsuarioComponent } from './usuario-logado/usuario-logado.component';
 
 export const routes: Routes = [
     {path:"busca", component:BuscaComponent},
     {path:"cesta", component:CestaComponent},
-{ path: 'detalhe/:id', component: DetalheComponent },
+    { path: 'detalhe/:id', component: DetalheComponent },
 //    {path:"detalhe", component:DetalheComponent},
-{path:"login", component:LoginComponent},
+    {path:"login", component:LoginComponent},
     {path:"vitrine", component:VitrineComponent},
     {path:"esqueci-senha", component:EsqueciSenhaComponent},
     {path:"cadastro", component:CadastroComponent},
+    {path:"usuario-logado", component:UsuarioComponent},
     {path:"", component:VitrineComponent}
 ];
