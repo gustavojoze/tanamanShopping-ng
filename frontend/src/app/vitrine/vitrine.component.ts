@@ -27,10 +27,17 @@ export class VitrineComponent {
       error:(msg) =>{this.mensagem="ocorreu um erro, volte mais tarde"}
     });
   }
-  public verDetalhe(item:Produto) {
-    localStorage.setItem("produto", JSON.stringify(item));
-    window.location.href="./detalhe";
+  // public verDetalhe(item:Produto) {
+  //   localStorage.setItem("produto", JSON.stringify(item));
+  //   window.location.href="./detalhe";
+  // }
+
+  public verDetalhe(item: Produto) {
+    window.location.href = `/detalhe/${item.codigo}`;
   }
+  
+
+
 
   public item: Produto = new Produto();
   public count: number = 0; 

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Produto } from '../model/produto';
 import { Cesta } from '../model/cesta';
 import { Item } from '../model/item';
+import { ActivatedRoute } from '@angular/router';
+import { ProdutoService } from '../service/produto.service';
 @Component({
   selector: 'app-detalhe',
   standalone: true,
@@ -17,14 +19,30 @@ export class DetalheComponent {
   public mostrarCarrinho: boolean = false;
   public mostrarModalCarrinho: boolean = false;  
 
-  constructor() {
-    let json = localStorage.getItem("produto");
-    if (json != null) {
-      this.item = JSON.parse(json);
-    } else {
-      this.mensagem = "Produto não encontrado!";
-    }
+  // constructor() {
+  //   let json = localStorage.getItem("produto");
+  //   if (json != null) {
+  //     this.item = JSON.parse(json);
+  //   } else {
+  //     this.mensagem = "Produto não encontrado!";
+  //   }
+  // }
+
+
+  constructor(private route: ActivatedRoute, private service: ProdutoService) {
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      this.carregarProduto(id);
+    });
   }
+  
+  carregarProduto(id: number) {
+    this.service.carregar(id).subscribe({
+      next: (produto) => this.item = produto,
+      error: () => this.mensagem = "Produto não encontrado!"
+    });
+  }
+ 
 
   public adicionarCesta(item: Produto) {
     let cesta = JSON.parse(localStorage.getItem("cesta") || '[]');

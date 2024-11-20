@@ -10,8 +10,9 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 export const routes: Routes = [
     {path:"busca", component:BuscaComponent},
     {path:"cesta", component:CestaComponent},
-    {path:"detalhe", component:DetalheComponent},
-    {path:"login", component:LoginComponent},
+{ path: 'detalhe/:id', component: DetalheComponent },
+//    {path:"detalhe", component:DetalheComponent},
+{path:"login", component:LoginComponent},
     {path:"vitrine", component:VitrineComponent},
     {path:"esqueci-senha", component:EsqueciSenhaComponent},
     {path:"cadastro", component:CadastroComponent},
