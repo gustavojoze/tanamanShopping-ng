@@ -16,6 +16,8 @@ export class LoginComponent {
   public mensagem: string = "";
   public estaLogado: boolean = false;
   public obj: Cliente = new Cliente();
+  public emailUser: string = '';
+  public senhaUser: string = '';
 
   constructor(private clienteService: ClienteService, private router: Router) {}
 
@@ -24,21 +26,23 @@ export class LoginComponent {
   }
 
   public fazerLogin() {
-    if (this.obj.email === "" || this.obj.senha === "") {
+    if (this.emailUser.trim() === '' || this.senhaUser.trim() === '') {
       this.mensagem = "Preencha todos os campos";
-      return;
-    }
-  
+    }else{
+   
+      this.obj.email = this.emailUser;
+      this.obj.senha = this.senhaUser;
+    
     this.clienteService.login(this.obj).subscribe({
-      next: (cliente) => {
-        if (cliente) {
+      next: (obj: Cliente) => {
+        if (obj) {
           
-          localStorage.setItem("loginMessage", `Bem-vindo, ${cliente.nome}!`);
-          localStorage.setItem('cliente', JSON.stringify(cliente));
+          localStorage.setItem("loginMessage", `Bem-vindo, ${obj.nome}!`);
+          localStorage.setItem('cliente', JSON.stringify(obj));
           console.log(localStorage.getItem('cliente')); // Verifique se o cliente está salvo
 
       
-          localStorage.setItem("cadastro", JSON.stringify(cliente));
+          localStorage.setItem("cadastro", JSON.stringify(obj));
           this.router.navigate(['/vitrine']);
           
         } else {
@@ -50,6 +54,7 @@ export class LoginComponent {
         this.mensagem = "Erro ao realizar login. Tente novamente mais tarde.";
       },
     });
+  }
   }
 
   public verificaLogado() {
