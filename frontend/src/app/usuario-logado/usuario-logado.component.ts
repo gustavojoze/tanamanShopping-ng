@@ -25,7 +25,7 @@ export class UsuarioComponent {
   
   ngOnInit(): void {
    
-    this.verificarEstaLogado();
+    this.verificaLogado();
     if (this.estaLogado) {
       console.log(localStorage.getItem('cliente')); 
       this.service.pesquisar(this.obj.codigo).subscribe({
@@ -41,7 +41,7 @@ export class UsuarioComponent {
       this.router.navigate(['/login']); 
     }
   }
-  verificarEstaLogado(): void {
+  verificaLogado(): void {
     this.estaLogado = localStorage.getItem('cliente') !== null;
   }
   

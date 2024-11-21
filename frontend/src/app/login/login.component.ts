@@ -20,7 +20,7 @@ export class LoginComponent {
   constructor(private clienteService: ClienteService, private router: Router) {}
 
   ngOnInit() {
-    this.verificarEstaLogado();
+    this.verificaLogado();
   }
 
   public fazerLogin() {
@@ -52,7 +52,7 @@ export class LoginComponent {
     });
   }
 
-  public verificarEstaLogado() {
+  public verificaLogado() {
     this.estaLogado = localStorage.getItem('cliente') !== null;
   }
 
