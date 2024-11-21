@@ -1,30 +1,4 @@
-// import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-// import { Cliente } from '../model/cliente';
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ClienteService {
 
-//   constructor(private http : HttpClient) { }
-  
-//   inserir(obj: Cliente) : string{
-//     let mensagem = "";
-//     this.http.post("http://localhost:8080/api/cliente", obj)
-//     .subscribe(
-//       {
-//         next:(data) =>{
-//           mensagem = "Cliente cadastrado com sucesso!";
-//         },
-//         error:(error) =>{
-//           mensagem="Ocorreu um erro tente mais tarde";
-//         }
-//       }
-//     );
-//     return mensagem
-//   }
-// }
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -38,8 +12,12 @@ export class ClienteService {
 
   constructor(private http : HttpClient) { }
 
-  verificarEmailExistente(email: string): Observable<boolean> {
+  verificarEmail(email: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/verificar-email/${email}`);
+  }
+
+  esquecerSenha(cliente: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>("http://localhost:8080/api/cliente/esqueci-senha", cliente);
   }
   
   inserir(obj: Cliente) : Observable<Object>{
@@ -59,7 +37,7 @@ export class ClienteService {
     return this.http.delete("http://localhost:8080/api/cliente/"+ codigo, { responseType: 'text' });
   }
 
-  login(obj: Cliente): Observable<Cliente | null> {
+  login(obj: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>("http://localhost:8080/api/cliente/login", obj);
   }
 }
