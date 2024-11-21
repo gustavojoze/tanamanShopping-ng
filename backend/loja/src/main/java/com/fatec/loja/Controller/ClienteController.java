@@ -80,10 +80,10 @@ public class ClienteController {
     }
 
 
-    @PostMapping("/api/cliente/recupera")
-    public Cliente recuperarSenha(@RequestBody Cliente obj){
+    @PostMapping("/api/cliente/esqueci-senha")
+    public Cliente esquecerSenha(@RequestBody Cliente obj){
         Optional<Cliente> retorno = 
-            bd.recuperaSenha(obj.getEmail());
+            bd.esqueciSenha(obj.getEmail());
         if(retorno.isPresent()){
             return retorno.get();
         } else {
@@ -96,5 +96,8 @@ public class ClienteController {
         Optional<Cliente> cliente = bd.verificacaoEmail(email);
         return cliente.isPresent(); 
     }
+
+
+
 
 }
