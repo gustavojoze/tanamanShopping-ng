@@ -1,14 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
-
 @Component({
   selector: 'app-notification',
   template: `
     <div *ngIf="messagem" class="notification">
       <span>{{ messagem }}</span>
-      <button class="close-btn" (click)="closeNotification()">Fechar</button>
     </div>
   `,
   styleUrls: ['./notification.component.css'],
@@ -20,6 +17,12 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit() {
     this.messagem = localStorage.getItem('loginMessage');
+
+    if (this.messagem) {
+      setTimeout(() => {
+        this.closeNotification();
+      }, 3000); 
+    }
   }
 
   closeNotification() {
