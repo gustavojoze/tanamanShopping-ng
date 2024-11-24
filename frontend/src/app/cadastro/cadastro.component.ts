@@ -76,7 +76,7 @@ export class CadastroComponent {
         if (this.obj.senha === this.obj.confirmarSenha) {
           //  localStorage.setItem("cadastro", JSON.stringify(this.obj));
                 
-          this.service.verificarEmailExistente(this.obj.email).subscribe({
+          this.service.verificarEmail(this.obj.email).subscribe({
             next: (emailExistente) => {
               if (emailExistente) {
                 this.mensagem = "Já existe um usuário com esse email ou cpf cadastrado!";
@@ -126,10 +126,11 @@ export class CadastroComponent {
 
   public carregar(){
     let json = localStorage.getItem("cadastro");
+    console.log(this.obj);
     if(json == null){
       window.location.href="./login"
     } else {
-      this.obj = JSON.parse(json);
+      this.obj = new Cliente();
     }
   }
 
