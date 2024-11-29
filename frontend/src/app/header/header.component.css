@@ -146,7 +146,9 @@ header .header_logo{
 
 
 
-@media (max-width: 768px) {
-   
+@media (max-width: 400px) {
+    .header_input ::placeholder{
+        font-size: 11px;
+    }
 }
     
