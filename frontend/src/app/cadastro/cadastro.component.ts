@@ -16,52 +16,14 @@ import { ClienteService } from '../service/cliente.service';
 })
 
 export class CadastroComponent {
-  public mensagem: string = "     Bem vindo á TANAMAN!\n Faça seu cadastrou ou login.";
+  public mensagem: string = "Bem vindo á TANAMAN!\n Faça seu cadastrou ou login.";
   public obj: Cliente = new Cliente();
 
   constructor(private service: ClienteService){
     this.carregar();
   }
 
-
-
-//   gravar(){
-//     this.service.inserir(this.obj).subscribe({
-//       next:(data)=>{this.mensagem="registrado inserido com sucesso!"},
-//       error:(err)=>{this.mensagem="ocorreu um problema tente mais tarde!;"}
-//  });
-//   }
-//   alterar(){
-//       this.service.alterar(this.obj).subscribe({
-//           next:(data)=>{this.mensagem="registrado alterado com sucesso!"},
-//           error:(err)=>{this.mensagem="ocorreu um problema tente mais tarde!;"}
-//      });
-//   }
-//   remover(){
-//     this.service.remover(this.obj.codigo).subscribe({
-//       next:(data)=>{this.mensagem="registrado removido com sucesso!"},
-//       error:(err)=>{this.mensagem="ocorreu um problema tente mais tarde!;"}
-//      });
-//   }
-//   pesquisar(){
-//       this.service.pesquisar(this.obj.codigo).subscribe({
-//         next:(data)=>{
-//             if(data==null){
-//               this.mensagem = "registro não encontrado!";
-//             } else {
-//               this.obj = data;
-//               this.mensagem = "";
-//             }
-//         },
-//         error:(err)=>{this.mensagem="ocorreu um problema tente mais tarde!;"}
-//       });
-
-//   }
-
-
-
-
-  public gravar() {
+public gravar() {
     if (
         this.obj.nome != "" &&
         this.obj.email != "" &&
@@ -76,7 +38,7 @@ export class CadastroComponent {
         if (this.obj.senha === this.obj.confirmarSenha) {
           //  localStorage.setItem("cadastro", JSON.stringify(this.obj));
                 
-          this.service.verificarEmailExistente(this.obj.email).subscribe({
+          this.service.verificarEmail(this.obj.email).subscribe({
             next: (emailExistente) => {
               if (emailExistente) {
                 this.mensagem = "Já existe um usuário com esse email ou cpf cadastrado!";
