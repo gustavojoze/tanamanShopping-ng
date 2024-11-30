@@ -88,10 +88,11 @@ public gravar() {
 
   public carregar(){
     let json = localStorage.getItem("cadastro");
+    console.log(this.obj);
     if(json == null){
       window.location.href="./login"
     } else {
-      this.obj = JSON.parse(json);
+      this.obj = new Cliente();
     }
   }
 

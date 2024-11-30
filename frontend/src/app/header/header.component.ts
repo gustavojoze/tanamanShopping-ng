@@ -55,7 +55,7 @@ export class HeaderComponent {
   }
 
   public userClick() {
-    if (this.userLogado.codigo !== 0) {
+    if (this.userLogado) {
       this.IrUserLogado();
     } else {
       this.IrLogin();

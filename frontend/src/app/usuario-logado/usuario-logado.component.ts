@@ -102,7 +102,7 @@ export class UsuarioComponent {
   public deslogar() {
     localStorage.removeItem('cliente');
     this.estaLogado = false;  
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/vitrine']); 
   }
 
   public carregar(){
