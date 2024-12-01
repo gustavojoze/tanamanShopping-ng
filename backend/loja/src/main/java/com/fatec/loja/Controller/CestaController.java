@@ -4,6 +4,7 @@ import java.util.List;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,9 +30,18 @@ public class CestaController {
 
     @PostMapping("/api/cesta")
     public Cesta gravar(@RequestBody Cesta obj){
-       obj.setCodigoCliente();
-       bd.save(obj);
-       return obj;
+
+    if (obj.getCliente() != null && obj.getCliente().getCodigo() != 0) {
+        
+        obj.setCodigoCliente();
+    } else {
+      
+        throw new IllegalArgumentException("Código do cliente inválido");
+    }
+        int novoCodigo = bd.codMaximo() + 1; 
+        obj.setCodigo(novoCodigo);
+        Cesta cesta = bd.save(obj); 
+        return cesta;
     }
 
     @PutMapping("/api/cesta")
