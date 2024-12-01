@@ -16,7 +16,7 @@ import { ClienteService } from '../service/cliente.service';
 })
 
 export class CadastroComponent {
-  public mensagem: string = "Bem vindo á TANAMAN!\n Faça seu cadastrou ou login.";
+  public mensagem: string = "Bem vindo à TANAMAN!\n Faça seu cadastro ou login.";
   public obj: Cliente = new Cliente();
 
   constructor(private service: ClienteService){
