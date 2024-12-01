@@ -35,15 +35,15 @@ export class HeaderComponent {
 
 
   public IrCadastro() {
-    window.location.href = "./cadastro";
+    this.router.navigate(['/cadastro']); 
   }
 
   public IrCesta() {
-    window.location.href = "./cesta"
+    this.router.navigate(['/cesta']); 
   }
 
   public IrVitrine() {
-    window.location.href = "./vitrine"
+    this.router.navigate(['vitrine']); 
   }
 
   public IrLogin() {
