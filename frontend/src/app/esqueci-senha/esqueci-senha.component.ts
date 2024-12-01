@@ -15,35 +15,44 @@ import { Router } from '@angular/router';
 export class EsqueciSenhaComponent {
   public mensagem: string = "";
   public obj: Cliente = new Cliente();
-  public emailCadastrado:string = "";
+  public emailCadastrado: string = "";
 
-  constructor(private service: ClienteService, private router: Router){}
+  constructor(private service: ClienteService, private router: Router) {}
 
   public reenviar() {
-    if (this.obj.email === "") {
-      this.mensagem = "Preencha o campo e-mail.";
-    } else {
-      console.log(this.obj.email)
-      this.service.esqueciSenha(this.obj).subscribe({
-        next: (response: any) => {
-          if (response.token) {
-            this.router.navigate(['/redefinir-senha'], { 
-              queryParams: { email: this.obj.email, token: response.token } 
-            });
-          } else {
-            this.mensagem = response.mensagem `  "Erro desconhecido."`;
-          }
-        },
-        error: (err) => {
-          if (err.status === 404) {
-            this.mensagem = err.error.mensagem ` "E-mail não encontrado, verifique!!"`;
-          } else {
-            this.mensagem = "Erro ao processar a solicitação.";
-          }
-          console.error(err);
+    this.service.verificarEmail(this.obj.email).subscribe({
+      next: (emailExistente) => {
+        if (!emailExistente) {
+          this.mensagem = "Email não cadastrado";
+        } else if (this.obj.email === "") {
+          this.mensagem = "Preencha o campo e-mail.";
+        } else {
+          console.log(this.obj.email);
+          this.service.esqueciSenha(this.obj).subscribe({
+            next: (response: any) => {
+              if (response.token) {
+                this.router.navigate(['/redefinir-senha'], {
+                  queryParams: { email: this.obj.email, token: response.token }
+                });
+              } else {
+                this.mensagem = "Erro desconhecido.";
+              }
+            },
+            error: (err) => {
+              if (err.status === 404) {
+                this.mensagem = "E-mail não encontrado, verifique!!";
+              } else {
+                this.mensagem = "Erro ao processar a solicitação.";
+              }
+              console.error(err);
+            }
+          });
         }
-      });
-    }
+      },
+      error: (err) => {
+        this.mensagem = "Erro ao verificar e-mail.";
+        console.error(err);
+      }
+    });
   }
-  
 }
