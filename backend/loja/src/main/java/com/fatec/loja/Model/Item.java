@@ -17,6 +17,7 @@ public class Item {
     private int quantidade = 0;
     private double valor = 0;
     private int codigoCesta = 0;
+    
 
     public int getCodigoCesta() {
         return codigoCesta;
@@ -25,10 +26,15 @@ public class Item {
         this.codigoCesta = codigoCesta;
     }
    
-
+    
     public int getCodigoProduto() {
         return codigoProduto;
     }
+
+      public void setCodigoProduto(int codigoProduto) {
+        this.codigoProduto = codigoProduto;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -40,7 +46,9 @@ public class Item {
     }
     public void setProduto(Produto produto) {
         this.produto = produto;
-        this.codigoProduto = produto.getCodigo();
+         if (produto != null) {
+            this.codigoProduto = produto.getCodigo(); // Atribui automaticamente o código do produto
+        }
     }
     public int getQuantidade() {
         return quantidade;
@@ -54,5 +62,6 @@ public class Item {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
 
 }
