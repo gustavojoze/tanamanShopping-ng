@@ -19,7 +19,7 @@ JpaRepository<Cliente,Integer> {
     Optional<Cliente> verificacaoEmail(String email);
 
     @Query(value = "select * from cliente where cpf=?1", nativeQuery = true)
-    Optional<Cliente> findByCpf(String cpf);
+    Optional<Cliente> verificacaoCpf(String cpf);
 
     @Query(value = "select * from cliente where email=?1", nativeQuery = true)
     Optional<Cliente> esqueciSenha(String email);

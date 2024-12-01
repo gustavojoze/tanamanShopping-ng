@@ -16,6 +16,10 @@ export class ClienteService {
     return this.http.get<boolean>(`${this.apiUrl}/verificar-email/${email}`);
   }
 
+  verificarCpf(cpf: string): Observable<boolean>{
+    return this.http.get<boolean>(`${this.apiUrl}/verificar-cpf/${cpf}`);
+  }
+
   esquecerSenha(cliente: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>("http://localhost:8080/api/cliente/esqueci-senha", cliente);
   }

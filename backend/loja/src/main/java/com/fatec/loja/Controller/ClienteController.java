@@ -34,8 +34,8 @@ public class ClienteController {
     }
 
     // Verificar CPF se for necessário
-    Optional<Cliente> clienteExistentePorCPF = bd.findByCpf(obj.getCpf());
-    if (clienteExistentePorCPF.isPresent()) {
+
+    if (bd.verificacaoCpf(obj.getCpf()).isPresent()) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado!");
     }
 
@@ -127,6 +127,12 @@ public class ClienteController {
         return cliente.isPresent(); 
     }
 
+    @GetMapping("/api/cliente/verificar-cpf/{cpf}")
+    public boolean verificarCpf(@PathVariable String cpf) {
+        Optional<Cliente> cliente = bd.verificacaoCpf(cpf);
+        return cliente.isPresent();
+    }
+    
 
 
 
