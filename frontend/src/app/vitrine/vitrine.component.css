@@ -138,3 +138,9 @@ h1{
         gap: 10px; 
     }
 }
+
+@media (max-width: 400px) {
+    h1{
+        font-size: 25px;
+    }
+}

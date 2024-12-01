@@ -2,59 +2,127 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Cesta } from '../model/cesta';
 import { Item } from '../model/item';
+import { CestaService } from '../service/cesta.service';
 
 @Component({
   selector: 'app-cesta',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './cesta.component.html',
-  styleUrl: './cesta.component.css'
+  styleUrls: ['./cesta.component.css']
 })
-
 export class CestaComponent {
   public mensagem: string = "Sua cesta";
   public cesta: Cesta = new Cesta();
-  public mostrarConfirmacao: boolean = false; 
+  public total: number = 0;
 
-  constructor(){
-    let json = localStorage.getItem("cesta");
-    if(json!=null) {
+  constructor(private service: CestaService) {
+    this.carregarCesta();
+  }
+
+  /**
+   * Carrega a cesta do armazenamento local e atualiza o total.
+   */
+  private carregarCesta() {
+    const json = localStorage.getItem("cesta");
+    if (json) {
       this.cesta = JSON.parse(json);
+      this.atualizarTotal();
     } else {
-      this.mensagem = "Cesta vazia, adicione novos itens!";
+      this.mensagem = "Carrinho vazio, adicione novos itens!";
     }
   }
 
-  public removerItem(obj: Item) {
-    let itemEncontrado = this.cesta.itens.find(item => item.codigo === obj.codigo);
-  
-    if (itemEncontrado) {
+  /**
+   * Atualiza o valor total da cesta.
+   */
+  private atualizarTotal() {
+    this.total = this.cesta.itens.reduce((total, item) => total + (item.quantidade * item.produto.valor), 0);
+    this.cesta.total = this.total; // Atualiza também na cesta
+  }
+
+  /**
+   * Grava o pedido na API.
+   */
+  public gravarPedido() {
+    if (this.cesta.itens.length === 0) {
+      this.mensagem = "Carrinho vazio! Adicione itens antes de realizar o pedido.";
+      return;
+    }
+
+    const jsonCliente = localStorage.getItem("cliente");
+    if (jsonCliente) {
+      this.cesta.cliente = JSON.parse(jsonCliente);
+      this.service.gravarPedido(this.cesta).subscribe({
+        next: (novoPedido) => {
+          console.log(novoPedido)
+          this.gravarItens(novoPedido.codigo);
+        },
+        error: () => {
+          this.mensagem = "Ocorreu um erro ao gravar o pedido, tente novamente.";
+        }
+      });
+    } else {
+      this.mensagem = "Faça o login para gravar o pedido!";
+    }
+  }
+
+  /**
+   * Grava os itens de um pedido.
+   */
+  private gravarItens(codigoPedido: number) {
+    this.cesta.itens.forEach(item => {
+      item.codigo = codigoPedido;
+    });
+
+    this.service.gravarItem(this.cesta.itens).subscribe({
+      next: () => {
+        this.mensagem = `Pedido ${codigoPedido} gravado com sucesso!`;
+        this.limpar();
+      },
+      error: () => {
+        this.mensagem = "Erro ao gravar itens do pedido, tente novamente.";
+      }
+    });
+  }
+
+  /**
+   * Remove um item da cesta.
+   */
+  public removerItem(item: Item) {
+    const index = this.cesta.itens.findIndex(i => i.codigo === item.codigo);
+    if (index !== -1) {
+      const itemEncontrado = this.cesta.itens[index];
       if (itemEncontrado.quantidade > 1) {
         itemEncontrado.quantidade--;
-        itemEncontrado.valor = itemEncontrado.quantidade * itemEncontrado.produto.valor;
-      } 
-      else {
-        this.cesta.itens = this.cesta.itens.filter(item => item.codigo !== obj.codigo);
+      } else {
+        this.cesta.itens.splice(index, 1);
       }
-        this.cesta.total = this.cesta.itens.reduce((total, item) => total + item.valor, 0);
-        localStorage.setItem("cesta", JSON.stringify(this.cesta));
+
+      this.atualizarTotal();
+      this.salvarCesta();
     }
-      if (this.cesta.itens.length === 0) {
-      this.mensagem = "Cesta vazia, adicione novos itens!";
-      localStorage.removeItem("cesta");
+
+    if (this.cesta.itens.length === 0) {
+      this.mensagem = "Carrinho vazio, adicione novos itens!";
+      this.limpar();
     }
   }
 
-  public limparCesta(){
+  /**
+   * Limpa a cesta e o armazenamento local.
+   */
+  public limpar() {
     localStorage.removeItem("cesta");
     this.cesta = new Cesta();
-    this.mensagem = "Cesta vazia, adicione novos itens!";
+    this.total = 0;
+    this.mensagem = "Carrinho vazio, adicione novos itens!";
   }
 
-  public finalizarCompra() {
-    this.mensagem = "Compra finalizada com sucesso!";
-    localStorage.removeItem("cesta");
-    this.cesta = new Cesta();
-    this.mostrarConfirmacao = false;
+  /**
+   * Salva a cesta no armazenamento local.
+   */
+  private salvarCesta() {
+    localStorage.setItem("cesta", JSON.stringify(this.cesta));
   }
 }

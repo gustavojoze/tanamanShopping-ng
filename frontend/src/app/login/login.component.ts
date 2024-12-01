@@ -39,7 +39,7 @@ export class LoginComponent {
           
           localStorage.setItem("loginMessage", `Bem-vindo, ${obj.nome}!`);
           localStorage.setItem('cliente', JSON.stringify(obj));
-          console.log(localStorage.getItem('cliente')); // Verifique se o cliente está salvo
+          localStorage.getItem('cliente'); 
 
       
           localStorage.setItem("cadastro", JSON.stringify(obj));

@@ -7,6 +7,7 @@ import { VitrineComponent } from './vitrine/vitrine.component';
 import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { UsuarioComponent } from './usuario-logado/usuario-logado.component';
+import { RedefinirSenhaComponent } from './redefinir-senha/redefinir-senha.component';
 
 export const routes: Routes = [
     {path:"busca", component:BuscaComponent},
@@ -16,6 +17,7 @@ export const routes: Routes = [
     {path:"login", component:LoginComponent},
     {path:"vitrine", component:VitrineComponent},
     {path:"esqueci-senha", component:EsqueciSenhaComponent},
+    {path:"redefinir-senha", component:RedefinirSenhaComponent},
     {path:"cadastro", component:CadastroComponent},
     {path:"usuario-logado", component:UsuarioComponent},
     {path:"", component:VitrineComponent}

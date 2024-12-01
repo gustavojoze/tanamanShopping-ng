@@ -23,8 +23,8 @@
       </div>
 
       <div class="button-container">
-          <button class ="button-limpar" (click)="limparCesta()" [disabled]="cesta.itens.length === 0">Limpar</button>
-          <button class ="button-finalizar" *ngIf="cesta.itens.length > 0" (click)="finalizarCompra()">Finalizar</button>
+          <button class ="button-limpar" (click)="limpar()" [disabled]="cesta.itens.length === 0">Limpar</button>
+          <button class ="button-finalizar" *ngIf="cesta.itens.length > 0" (click)="gravarPedido()">Finalizar</button>
       </div>
   </div>
 </main>

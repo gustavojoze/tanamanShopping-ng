@@ -1,0 +1,29 @@
+<div class="container_cadastro">
+    <div class="container_forms">
+        <h1>Redefina sua nova senha</h1>
+        <b class="mensagem">{{mensagem}}</b>
+        <form>
+            <div>
+                <label for="">Senha</label>
+                <div class="input">
+                    <input class="content_input " [type]="PasswordVisivel ? 'text' : 'password'" [(ngModel)]="novaSenha"
+                    name="senha" required>  
+                    <i class="fas" [class.fa-eye]="!PasswordVisivel" [class.fa-eye-slash]="PasswordVisivel" (click)="SenhaVisivel()"
+                    id="eyeIcon"></i>                
+                </div>
+            </div>
+            <div>
+                <label for="">Confirmar Senha</label>
+                <div class="input">
+                    <input class="content_input " [type]="PasswordVisivel ? 'text' : 'password'" [(ngModel)]="confirmarSenha"
+                        name="senha" required>  
+                        <i class="fas" [class.fa-eye]="!PasswordVisivel" [class.fa-eye-slash]="PasswordVisivel" (click)="SenhaVisivel()"
+                        id="eyeIcon"></i> 
+                </div> 
+            </div>
+            <div class="container_buttons">
+                <button type="submit" class="btn" (click)="redefinir()">Redefinir</button>
+            </div>
+        </form>
+    </div>
+</div>
