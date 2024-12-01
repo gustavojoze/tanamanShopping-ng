@@ -3,6 +3,7 @@ import { Cliente } from '../model/cliente';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ClienteService } from '../service/cliente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-esqueci',
@@ -16,28 +17,33 @@ export class EsqueciSenhaComponent {
   public obj: Cliente = new Cliente();
   public emailCadastrado:string = "";
 
-  constructor(private clienteService: ClienteService) {}
+  constructor(private service: ClienteService, private router: Router){}
 
   public reenviar() {
-    if (this.emailCadastrado !== "" && this.emailCadastrado !== null) {
-     
-
-    this.obj.email = this.emailCadastrado;
-    this.clienteService.esquecerSenha(this.obj).subscribe({
-      next: (cliente: Cliente) => {
-        if (cliente) {
-          this.mensagem = `As instruções para redefinição de senha foram enviadas para o e-mail: ${this.obj.email}`;
-        } else {
-          this.mensagem = "Não existe um usuário com esse e-mail cadastrado.";
+    if (this.obj.email === "") {
+      this.mensagem = "Preencha o campo e-mail.";
+    } else {
+      console.log(this.obj.email)
+      this.service.esqueciSenha(this.obj).subscribe({
+        next: (response: any) => {
+          if (response.token) {
+            this.router.navigate(['/redefinir-senha'], { 
+              queryParams: { email: this.obj.email, token: response.token } 
+            });
+          } else {
+            this.mensagem = response.mensagem `  "Erro desconhecido."`;
+          }
+        },
+        error: (err) => {
+          if (err.status === 404) {
+            this.mensagem = err.error.mensagem ` "E-mail não encontrado, verifique!!"`;
+          } else {
+            this.mensagem = "Erro ao processar a solicitação.";
+          }
+          console.error(err);
         }
-      },
-      error: (err) => {
-        console.error(err);
-        this.mensagem = "Ocorreu um erro ao verificar o e-mail. Tente novamente mais tarde.";
-      },
-    });
-  }else {
-    this.mensagem = "Por favor, insira um e-mail.";
+      });
+    }
   }
-  }
+  
 }
