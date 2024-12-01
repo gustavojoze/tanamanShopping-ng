@@ -5,4 +5,6 @@ export class Item {
     public produto: Produto = new Produto();
     public quantidade: number = 0;
     public valor: number = 0;
+    public codigoCesta: number = 0;
+    public codigoProduto: number = 0;
 }
