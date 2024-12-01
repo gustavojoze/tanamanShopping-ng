@@ -15,7 +15,7 @@ export class CestaService {
     return this.http.post("http://localhost:8080/api/cesta", obj);
   }
 
-  gravarItem(obj: Item[]): Observable<any> {
+  gravarItens(obj: Item[]): Observable<any> {
     return this.http.post("http://localhost:8080/api/itensCesta", obj);
   }
 }
