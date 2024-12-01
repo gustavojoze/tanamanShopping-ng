@@ -55,8 +55,8 @@ export class CestaComponent {
       this.cesta.cliente = JSON.parse(jsonCliente);
       this.service.gravarPedido(this.cesta).subscribe({
         next: (novoPedido) => {
-          console.log(novoPedido)
-          this.gravarItens(novoPedido.codigo);
+          console.log("Novo pedido", novoPedido)
+          this.gravarItens(novoPedido);
         },
         error: () => {
           this.mensagem = "Ocorreu um erro ao gravar o pedido, tente novamente.";
@@ -70,15 +70,13 @@ export class CestaComponent {
   /**
    * Grava os itens de um pedido.
    */
-  private gravarItens(codigoPedido: number) {
-    this.cesta.itens.forEach(item => {
-      item.codigo = codigoPedido;
-    });
-
-    this.service.gravarItem(this.cesta.itens).subscribe({
-      next: () => {
-        this.mensagem = `Pedido ${codigoPedido} gravado com sucesso!`;
-        this.limpar();
+  gravarItens(novoPedido: Cesta){
+    for(let obj of this.cesta.itens){
+        obj.codigoCesta = novoPedido.codigo
+    }
+    this.service.gravarItens(this.cesta.itens).subscribe({
+      next:(data)=>{
+        this.limparCompra(novoPedido);
       },
       error: () => {
         this.mensagem = "Erro ao gravar itens do pedido, tente novamente.";
@@ -112,6 +110,13 @@ export class CestaComponent {
   /**
    * Limpa a cesta e o armazenamento local.
    */
+
+  private limparCompra(novoPedido: Cesta) {
+    localStorage.removeItem("cesta");
+    this.cesta = new Cesta();
+    this.mensagem = `Compra realizada com sucesso! Pedido nº ${novoPedido.codigo}`;
+  }
+  
   public limpar() {
     localStorage.removeItem("cesta");
     this.cesta = new Cesta();
