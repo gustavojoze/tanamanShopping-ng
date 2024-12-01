@@ -66,6 +66,18 @@ label{
     border: none;
     box-shadow: none;
 }
+.inputDesabilitado{
+    background-color: #e4e0e0;
+}
+.inputDesabilitado:hover{
+    cursor: not-allowed;
+}
+.inputDesabilitado input{
+border-style:none ;
+width: 80%;
+}
+
+
 .container_esquescer-senha{
     height: 100px;
 }

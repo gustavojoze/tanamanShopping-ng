@@ -66,6 +66,7 @@ label{
     border: none;
     box-shadow: none;
 }
+
 .container_esquescer-senha{
     height: 100px;
 }
@@ -137,4 +138,24 @@ label{
     .mensagem {
         font-size: 15px;
     }   
+}
+
+@media(max-width:441px){
+    .mensagem pre{
+        font-size: 12px;
+    }
+
+}
+@media(max-width:387px){
+    .label-confirmarSenha{
+        font-size: 15.2px;
+    }
+}
+@media(max-width:374px){
+    .label-confirmarSenha{
+        font-size: 12.2px;
+    }
+    .mensagem pre{
+        font-size: 11px;
+    }
 }
