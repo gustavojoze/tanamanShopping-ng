@@ -16,9 +16,9 @@
 
             <div>
                 <label for="">Cpf</label>
-                <div class="input">
+                <div class="input inputDesabilitado">
                     <input class="content_input" type="text" [(ngModel)]="obj.cpf" name="cpf" required pattern="\d{11}"
-                        title="Digite um CPF válido com 11 números">
+                    disabled="" title="Não é possivel trocar o cpf, entre em contato com o suporte" class="inputDesabilitado">
                 </div>
             </div>
 
@@ -32,9 +32,9 @@
 
             <div>
                 <label for="">Email</label>
-                <div class="input">
+                <div class="input inputDesabilitado">
                     <input class="content_input" type="email" [(ngModel)]="obj.email" name="email" required
-                        title="E-mail no modelo seuemail@gmai.com">
+                        disabled="" title="Não é possivel trocar o email, entre em contato com o suporte" class="inputDesabilitado">
                 </div>
             </div>
 
@@ -66,7 +66,7 @@
                     <input class="content_input" type="text" [(ngModel)]="obj.cidade" name="cidade" required>
                 </div>
             </div>
-            <div>
+            <!-- <div>
                 <label for="">Senha</label>
                 <div class="input">
                     <input class="content_input " [type]="PasswordVisivel ? 'text' : 'password'" [(ngModel)]="obj.senha"
@@ -84,9 +84,9 @@
                         <i class="fas" [class.fa-eye]="!ConfirmaVisivel" [class.fa-eye-slash]="ConfirmaVisivel" (click)="ConfirmaSenhaVisivel()"
                             id="eyeIcon"></i>
                 </div>
-            </div>
-            <button type="submit" class="btn" (click)="gravar()">AtualizarDados</button>
-            <button type="submit" class="btn" (click)="deslogar()">Logout</button>
+            </div> -->
+            <button type="submit" class="btn" (click)="gravar()">Atualizar</button>
+            <button type="submit" class="btn" (click)="deslogar()">Sair</button>
             
         </form>
     </div>

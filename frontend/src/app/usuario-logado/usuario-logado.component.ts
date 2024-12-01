@@ -54,11 +54,9 @@ export class UsuarioComponent {
         this.obj.telefone != "" &&
         this.obj.logradouro != "" &&
         this.obj.cep != "" &&
-        this.obj.cidade != "" &&
-        this.obj.senha != "" &&
-        this.obj.confirmarSenha != ""
+        this.obj.cidade != "" 
     ) {
-        if (this.obj.senha === this.obj.confirmarSenha) {
+      
           //  localStorage.setItem("cadastro", JSON.stringify(this.obj));
                 
                 this.service.alterar(this.obj).subscribe({
@@ -82,7 +80,7 @@ export class UsuarioComponent {
                   }
                 });
                 
-              }
+              
             
         } else {
             this.mensagem = "Senha e a confirmação devem ser iguais";

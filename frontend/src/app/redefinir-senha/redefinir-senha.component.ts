@@ -51,7 +51,7 @@ export class RedefinirSenhaComponent {
     });
   }
   else{
-    this.mensagem="Senha e Confirmar senha tem que ser iguais"
+    this.mensagem="Senha e a confirmação devem ser iguais"
   }
 }
 

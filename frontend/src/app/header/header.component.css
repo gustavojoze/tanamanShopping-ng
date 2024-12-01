@@ -104,11 +104,16 @@ header .header_logo{
     
     .header_input{
         width: 70%;
-        height: 15px;
+        height: 10px;
+    }
+    .header_input input::placeholder{
+        font-size: 11px;
     }
     .header_input img{
         position: absolute;
         right: 5px;
+        height: 10px;
+        width: 10px;
         padding: 2px;
     }
    
