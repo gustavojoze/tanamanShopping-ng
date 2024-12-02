@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.fatec.loja.Model.Cesta;
 
 @Repository
-public interface CestaRepository 
-extends JpaRepository<Cesta, Integer>{
-    @Query("SELECT MAX(c.codigo) FROM Cesta c")
+public interface CestaRepository extends JpaRepository<Cesta, Integer> {
+    @Query("SELECT COALESCE(MAX(c.codigo), 0) FROM Cesta c")
     int codMaximo();
 }

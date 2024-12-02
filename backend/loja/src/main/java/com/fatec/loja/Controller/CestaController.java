@@ -27,39 +27,72 @@ import com.fatec.loja.Repository.CestaRepository;
 public class CestaController {
   @Autowired
   CestaRepository bd;
+//antes
+    // @PostMapping("/api/cesta")
+    // public Cesta gravar(@RequestBody Cesta obj){
 
-    @PostMapping("/api/cesta")
-    public Cesta gravar(@RequestBody Cesta obj){
-
-    if (obj.getCliente() != null && obj.getCliente().getCodigo() != 0) {
+    // if (obj.getCliente() != null && obj.getCliente().getCodigo() != 0) {
         
-        obj.setCodigoCliente();
-    } else {
+    //     obj.setCodigoCliente();
+    // } else {
       
-        throw new IllegalArgumentException("Código do cliente inválido");
-    }
-        int novoCodigo = bd.codMaximo() + 1; 
+    //     throw new IllegalArgumentException("Código do cliente inválido");
+    // }
+    //     int novoCodigo = bd.codMaximo() + 1; 
+    //     obj.setCodigo(novoCodigo);
+    //     Cesta cesta = bd.save(obj); 
+    //     return cesta;
+    // }
+
+
+    //depois
+    @PostMapping("/api/cesta")
+    public Cesta gravar(@RequestBody Cesta obj) {
+        if (obj.getCliente() != null && obj.getCliente().getCodigo() != 0) {
+            obj.setCodigoCliente();
+        } else {
+            throw new IllegalArgumentException("Código do cliente inválido");
+        }
+        int maxCodigo = bd.codMaximo();
+        int novoCodigo = maxCodigo + 1; 
         obj.setCodigo(novoCodigo);
-        Cesta cesta = bd.save(obj); 
+
+        Cesta cesta = bd.save(obj);
         return cesta;
     }
+
+
+
 
     @PutMapping("/api/cesta")
     public void alterar(@RequestBody Cesta obj){
         bd.save(obj);
        }
 
+    // @GetMapping("/api/cesta/{codigo}")
+    // public Cesta carregar(@PathVariable int codigo){
+    //    Optional<Cesta> obj = bd.findById(codigo);
+    //    if(obj.isPresent()){
+    //         return obj.get();
+    //     } else {
+    //         Cesta c1 = new Cesta();
+    //         c1.setCliente(new Cliente());
+    //         Set<Item> itens = new HashSet<Item>();
+    //         itens.add(new Item());
+    //         c1.setItens(itens);
+    //         return c1;
+    //     }
+    // }
+
     @GetMapping("/api/cesta/{codigo}")
-    public Cesta carregar(@PathVariable int codigo){
-       Optional<Cesta> obj = bd.findById(codigo);
-       if(obj.isPresent()){
+    public Cesta carregar(@PathVariable int codigo) {
+        Optional<Cesta> obj = bd.findById(codigo);
+        if (obj.isPresent()) {
             return obj.get();
         } else {
             Cesta c1 = new Cesta();
             c1.setCliente(new Cliente());
-            Set<Item> itens = new HashSet<Item>();
-            itens.add(new Item());
-            c1.setItens(itens);
+            c1.setItens(new HashSet<>());
             return c1;
         }
     }

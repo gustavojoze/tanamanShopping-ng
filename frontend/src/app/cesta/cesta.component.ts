@@ -70,17 +70,21 @@ export class CestaComponent {
   /**
    * Grava os itens de um pedido.
    */
-  gravarItens(novoPedido: Cesta){
-    for(let obj of this.cesta.itens){
-        obj.codigoCesta = novoPedido.codigo
-    }
-    this.service.gravarItens(this.cesta.itens).subscribe({
-      next:(data)=>{
-        this.limparCompra(novoPedido);
-      },
-      error: () => {
-        this.mensagem = "Erro ao gravar itens do pedido, tente novamente.";
-      }
+  gravarItens(novoPedido: Cesta) {
+    const novosItens = this.cesta.itens.map((item) => {
+        const novoItem = { ...item }; // Cria uma cópia do item
+        novoItem.codigo = 0; // Reseta o código para garantir que o backend crie um novo
+        novoItem.codigoCesta = novoPedido.codigo; // Associa ao novo pedido
+        return novoItem;
+    });
+
+    this.service.gravarItens(novosItens).subscribe({
+        next: (data) => {
+            this.limparCompra(novoPedido);
+        },
+        error: () => {
+            this.mensagem = "Erro ao gravar itens do pedido, tente novamente.";
+        }
     });
   }
 
